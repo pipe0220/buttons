@@ -9,26 +9,35 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.sena.buttons.databinding.ActivityButton1Binding
 
 class Button1() : AppCompatActivity(), View.OnClickListener {
-    var btnGoToButtons: Button? = null
+    //var btnGoToButtons: Button? = null
+
+    private lateinit var binding: ActivityButton1Binding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_button1)
+        /*setContentView(R.layout.activity_button1)
 
         btnGoToButtons = findViewById(R.id.btnGoToButtons)
 
-        btnGoToButtons?.setOnClickListener(this)
+        btnGoToButtons?.setOnClickListener(this)*/
+
+        binding = ActivityButton1Binding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btnGoToButtons.setOnClickListener(this)
+
 
 
     }
     override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.btnGoToButtons ->{
+        when(v){
+            binding.btnGoToButtons ->{
                 val intent=Intent(this,Buttons::class.java)
-                Toast.makeText(applicationContext, "Has ingresado a los Botones", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Has ingresado a los Botones", Toast.LENGTH_SHORT).show()
                 startActivity(intent)
             }
 
